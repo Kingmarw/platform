@@ -1,3 +1,4 @@
 pywebio
 fastapi
 uvicorn
+websockets
