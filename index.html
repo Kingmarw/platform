@@ -153,7 +153,7 @@
 
     <script>
       async function loadVideos() {
-        let res = await fetch("http://127.0.0.1:8000/api/videos");
+        let res = await fetch("https://platform-20mw.onrender.com/api/videos");
         let videos = await res.json();
         let container = document.getElementById("videos");
         container.innerHTML = "";
@@ -174,3 +174,4 @@
     </script>
   </body>
 </html>
+
