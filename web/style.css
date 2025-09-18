@@ -20,8 +20,10 @@ body {
   background-size: 200% 200%;
   animation: gradientMove 15s ease infinite;
 }
-
-/* حركة التدرج */
+#videos{
+  display:flex;
+  flex-direction: row;
+} 
 @keyframes gradientMove {
   0%,
   100% {
@@ -282,4 +284,5 @@ body {
   transform: scale(1.1);
   border: 1px solid rgb(136, 26, 232);
   background: transparent;
+
 }
