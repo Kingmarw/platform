@@ -1,177 +1,43 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>منصتي التعليمية</title>
-    <style>
-      * {
-        font-family: Tajawal, sans-serif;
-        color: #fff;
-      }
-      body {
-        margin: 0;
-        padding: 0;
-        background: linear-gradient(135deg, #1a1f4d, #3b0a6e, #0a1128);
-        background-attachment: fixed;
-      }
-      /* Navbar */
-      .nav {
-        position: fixed;
-        display: flex;
-        top: 0;
-        left: 0;
-        right: 0;
-        align-items: center;
-        justify-content: space-between;
-        padding: 15px 30px;
-        background: rgba(10, 17, 40, 0.7);
-        backdrop-filter: blur(12px);
-        z-index: 100;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      .nav .title {
-        font-size: 1.7rem;
-        font-weight: bold;
-        background: linear-gradient(90deg, #6a5acd, #b19cd9);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      .nav .links a {
-        font-size: large;
-        margin: 0 12px;
-        text-decoration: none;
-        transition: 0.3s;
-      }
-      .nav .links a:hover {
-        color: #b19cd9;
-      }
-      .nav .links button {
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 12px;
-        cursor: pointer;
-        background: linear-gradient(90deg, #6a5acd, #b19cd9);
-        transition: all 0.3s ease-in-out;
-      }
-      .nav .links button:hover {
-        transform: scale(1.05);
-        background: transparent;
-        border: 1px solid #b19cd9;
-      }
-
-      /* Hero Section */
-      .main {
-        text-align: center;
-        padding: 150px 20px 80px;
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(15px);
-        border-radius: 0 0 25px 25px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      }
-      .main h1 {
-        font-size: 3rem;
-        margin-bottom: 15px;
-        background: linear-gradient(90deg, #6a5acd, #b19cd9);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      .main p {
-        font-size: 1.2rem;
-        color: #ddd;
-      }
-
-      /* Videos Grid */
-      .videos {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
-        padding: 40px;
-      }
-      .card {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 15px;
-        overflow: hidden;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-      }
-      .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(106, 90, 205, 0.5);
-      }
-      video {
-        width: 100%;
-        border-bottom: 2px solid #6a5acd;
-      }
-      .card-body {
-        padding: 15px;
-        text-align: center;
-      }
-
-      /* Footer */
-      footer {
-        text-align: center;
-        padding: 25px;
-        background: rgba(10, 17, 40, 0.9);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 0.9rem;
-      }
-      footer a {
-        color: #b19cd9;
-        text-decoration: none;
-      }
-      footer a:hover {
-        text-decoration: underline;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
+    <title>نتعلم ببساطه</title>
   </head>
-  <body>
+  <body class="">
     <div class="nav">
-      <h1 class="title">📚 منصتي التعليمية</h1>
+      <h1 class="title">نتعلم ببساطه</h1>
+
       <div class="links">
-        <a href="#">الرئيسية</a>
-        <a href="#">معلومات</a>
-        <a href="#">تسجيل الدخول</a>
-        <a href="#"><button>ابدأ الآن</button></a>
+        <button><a href="signup/signup.html">سجل دخولك</a></button>
+        <span class="a">|</span>
+        <button><a href="signup/signup.html">اعمل حساب جديد</a></button>
+        <!-- <a href="video.html">الصفحة الرئيسية</a>
+        <span>|</span>
+        <a href="info/info.html">الكورسات</a> -->
       </div>
     </div>
-
     <div class="main">
-      <h1>مرحبًا بك في منصة الرياضيات</h1>
-      <p>تعلم بذكاء ✨ | دروس، فيديوهات، وتدريبات متجددة</p>
+      <div class="man">
+        <h1>اهلا بيك في منصة <span class="l">نتعلم ببساطه</span></h1>
+        <p>منصة متكاملة بها كل ما يحتاجه الطالب ليتفوق</p>
+        <br />
+        <a href="signup/signup.html"
+          ><button type="button">سجل دلوقتي</button></a
+        >
+      </div>
+      <div class="img"><img src="m.jpg" alt="" /></div>
     </div>
-
-    <div class="videos" id="videos"></div>
-
-    <footer>
-      <p>
-        &copy; 2025 منصتي التعليمية | تطوير:
-        <a href="https://porfolio-kingmarw.vercel.app">KingMarw</a>
-      </p>
-    </footer>
-
-    <script>
-      async function loadVideos() {
-        let res = await fetch("https://platform-20mw.onrender.com/api/videos");
-        let videos = await res.json();
-        let container = document.getElementById("videos");
-        container.innerHTML = "";
-        videos.forEach(video => {
-          let card = `
-            <div class="card">
-              <video controls>
-                <source src="${video.url}" type="video/mp4">
-              </video>
-              <div class="card-body">
-                <h3>${video.title}</h3>
-              </div>
-            </div>`;
-          container.innerHTML += card;
-        });
-      }
-      loadVideos();
-    </script>
+    <div class="main2">
+      <div class="card">
+        <h1></h1>
+      </div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="video" id="viedos"></div>
+    </div>
+    <script src="index.js"></script>
   </body>
 </html>
-
