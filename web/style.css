@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap");
+
+* {
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+/* الخلفية المتدرجة */
+body {
+  margin: 0;
+  padding: 0;
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #c05151, #d62424, #ff4848);
+  background-size: 200% 200%;
+  animation: gradientMove 15s ease infinite;
+}
+
+/* حركة التدرج */
+@keyframes gradientMove {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.nav {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  margin-top: auto;
+  color: #fff;
+  border-radius: 0 0 15px 15px;
+  padding: 30px;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+.nav .title {
+  width: auto;
+  color: #fff;
+  background: linear-gradient(90deg, rgb(255, 0, 55), rgb(241, 19, 23));
+  border-radius: 5px;
+  font-size: 2rem;
+}
+.nav .links a {
+  font-size: large;
+  color: #fff;
+  text-decoration: none;
+}
+.nav .links {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+.nav .links button {
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  background: linear-gradient(90deg, rgb(255, 0, 55), rgb(241, 19, 23));
+  transition: all 0.4s ease;
+}
+.nav .links button:hover {
+  transform: scale(1.1);
+  border: 1px solid rgb(241, 19, 23);
+  background: transparent;
+}
+.main {
+  display: flex;
+  flex-direction: row;
+  background: rgba(255, 255, 255, 0.2); /* شفاف 20% */
+  backdrop-filter: blur(15px); /* تأثير زجاجي */
+  border-radius: 20px;
+  margin-bottom: 90px;
+  margin-top: 90px;
+  padding: 40px;
+  width: 100%;
+  justify-content: space-between;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+.main2{
+  display: flex;
+  flex-direction: row;
+  background: rgba(255, 255, 255, 0.2); /* شفاف 20% */
+  backdrop-filter: blur(15px); /* تأثير زجاجي */
+  border-radius: 20px;
+  padding: 40px;
+  /* max-width: 700px; */
+  width: 100%;
+  justify-content: space-between;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+.man {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+.main h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.main2 h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.l {
+  font-size: 3rem;
+  background: linear-gradient(90deg, rgb(255, 0, 55), rgb(241, 19, 23));
+  border-radius: 5px;
+  box-shadow: rgba(255, 0, 0, 0.877) 0px 22px 70px;
+}
+
+.a {
+  font-size: 25px;
+  text-align: center;
+  margin: 0 10px 0 10px;
+}
+.img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.img img {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 390px;
+  border-radius: 15px;
+  animation-name: marw;
+  animation-delay: 0.5s;
+  animation-duration: 7s;
+  transition: all ease-in-out 5s;
+}
+@keyframes marw {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.main p {
+  font-size: 1.2rem;
+}
+.main a button {
+  width: 150px;
+  color: #fff;
+  font-size: large;
+  border: none;
+  padding: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  background: linear-gradient(90deg, rgb(255, 0, 55), rgb(241, 19, 23));
+  transition: all ease-in-out 0.4s;
+}
+.main a button:hover {
+  border: 1px solid rgb(241, 19, 23);
+  color: rgb(241, 19, 23);
+  background: transparent;
+}
+.main2 p {
+  font-size: 1.2rem;
+}
+.main2 a button {
+  width: 150px;
+  color: #fff;
+  font-size: large;
+  border: none;
+  padding: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  background: linear-gradient(90deg, rgb(255, 0, 55), rgb(241, 19, 23));
+  transition: all ease-in-out 0.4s;
+}
+.main2 a button:hover {
+  border: 1px solid rgb(241, 19, 23);
+  color: rgb(241, 19, 23);
+  background: transparent;
+}
+@keyframes gradientMove {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientMove 15s ease infinite;
+}
+
+.containerCards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.card {
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  padding: 15px;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+.card h2{
+  font-size: 2rem;
+}
+.card a button {
+  border: none;
+  padding: 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  background: linear-gradient(90deg, rgb(255, 0, 55), rgb(241, 19, 23));
+  transition: all ease-in-out 0.1s;
+}
+.card a button:hover{
+  transform: scale(1.1);
+  border: 1px solid rgb(241, 19, 23);
+  background: transparent;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 577px;
+  background: #333;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.containerCards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.card {
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  padding: 15px;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+.card h2{
+  font-size: 2rem;
+}
+.card a button {
+  border: none;
+  padding: 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  background: linear-gradient(90deg, rgb(136, 26, 232), rgb(81, 45, 168));
+  transition: all ease-in-out 0.1s;
+}
+.card a button:hover{
+  transform: scale(1.1);
+  border: 1px solid rgb(136, 26, 232);
+  background: transparent;
+}
