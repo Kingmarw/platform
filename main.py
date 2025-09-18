@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse, HTMLResponse
-from pywebio.input import file_upload
+from pywebio.input import file_upload,input
 from pywebio.output import put_text
 from pywebio.platform.fastapi import asgi_app
 from fastapi.staticfiles import StaticFiles
@@ -69,6 +69,7 @@ def home():
 
 # تقديم الملفات المرفوعة (static)
 app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
+
 
 
 
