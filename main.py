@@ -62,12 +62,13 @@ def get_videos():
 
 @app.get("/", response_class=HTMLResponse)
 def home():
-    file_path = r"index.html"
+    file_path = os.path.join("web", "index.html")
     with open(file_path, "r", encoding="utf-8") as f:
         return HTMLResponse(f.read())
 
 
 # تقديم الملفات المرفوعة (static)
 app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
+
 
 
