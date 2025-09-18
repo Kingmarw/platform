@@ -20,11 +20,11 @@
             <div class="col-md-4 mb-4">
               <div class="card">
                 <video controls>
-                  <source src="uploads/${video.file}" type="video/mp4">
+                  <source src="uploads/${videos.file}" type="video/mp4">
                   متصفحك لا يدعم الفيديو
                 </video>
                 <div class="card-body">
-                  <h5 class="card-title">${video.name}</h5>
+                  <h5 class="card-title">${videos.name}</h5>
                 </div>
               </div>
             </div>
@@ -36,4 +36,3 @@
     }
 
     loadVideos();
-
