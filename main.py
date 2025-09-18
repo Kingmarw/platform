@@ -53,7 +53,7 @@ app = FastAPI()
 
 # ربط PyWebIO كـ app داخل FastAPI
 app.mount("/admin", asgi_app(upload_page))
-
+app.mount("/web", StaticFiles(directory="web"), name="web")
 # API ترجع الفيديوهات
 @app.get("/api/videos")
 def get_videos():
@@ -69,6 +69,7 @@ def home():
 
 # تقديم الملفات المرفوعة (static)
 app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
+
 
 
 
