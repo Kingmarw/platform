@@ -37,10 +37,10 @@ def upload_page():
     file_path = os.path.join(UPLOAD_DIR, file['filename']) # type: ignore
     with open(file_path, "wb") as f:
         f.write(file['content']) # type: ignore
-
+    inp = input("اسم الفيديو")
     videos = load_videos()
     videos.append({
-        "title": file['filename'], # type: ignore
+        "title": inp, # type: ignore
         "url": f"/uploads/{file['filename']}" # type: ignore
     })
     save_videos(videos)
@@ -69,4 +69,5 @@ def home():
 
 # تقديم الملفات المرفوعة (static)
 app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
+
 
