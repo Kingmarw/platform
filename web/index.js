@@ -17,11 +17,16 @@
 
         videos.forEach(v => {
           container.innerHTML += `
-            <div class="video-box">
-              <h3>${v.title}</h3>
-              <video controls>
-                <source src="${v.url}" type="video/mp4">
-              </video>
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <video controls>
+                  <source src="uploads/${video.file}" type="video/mp4">
+                  متصفحك لا يدعم الفيديو
+                </video>
+                <div class="card-body">
+                  <h5 class="card-title">${video.name}</h5>
+                </div>
+              </div>
             </div>
           `;
         });
@@ -31,3 +36,4 @@
     }
 
     loadVideos();
+
