@@ -62,8 +62,8 @@ if (session == "logged" && username === "pk") {
   if (v) v.style.display = "none";
   if (user) user.style.display = "none";
   authArea.innerHTML = `
-    <button><a href="/lo">سجل دخولك</a></button>
+    <a href="/lo"><button>سجل دخولك</button></a>
     <span class="a">|</span> 
-    <button class="sign"><a href="/si">اعمل حساب جديد</a></button>
+    <a href="/si"><button class="sign">اعمل حساب جديد</button></a>
   `;
 }
