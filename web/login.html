@@ -15,7 +15,6 @@
         padding: 0;
         box-sizing: border-box;
         scroll-behavior: smooth;
-        
       }
       body {
         margin: 0;
@@ -55,7 +54,7 @@
         align-items: center;
         margin-bottom: 15px;
       }
-      form h1{
+      form h1 {
         color: #fff;
       }
       .in1 {
@@ -97,34 +96,72 @@
         color: rgb(241, 19, 23);
         background: transparent;
       }
+      @media (max-width: 480px) {
+        .container {
+          padding: 25px 15px;
+          width: 520px;
+        }
+
+        img {
+          width: 80px;
+        }
+
+        h1 {
+          font-size: 20px;
+        }
+
+        .btn,
+        .in1,
+        .in2 {
+          font-size: 13px;
+          padding: 8px;
+        }
+
+        span,
+        a {
+          font-size: 12px;
+        }
+      }
     </style>
-    
+
     <div class="container">
       <div id="error-box"></div>
-      <br>
+      <br />
       <div class="img">
         <img src="/web/logo.jpg" alt="" />
       </div>
       <br />
       <form action="/login" method="post">
         <h1>تسجيل الدخول</h1>
-        <input type="text" placeholder="اسم المستخدم" class="in1" name="username" required/>
-        <input type="password" placeholder="الباسورد" class="in2" name="password" required/>
+        <input
+          type="text"
+          placeholder="اسم المستخدم"
+          class="in1"
+          name="username"
+          required
+        />
+        <input
+          type="password"
+          placeholder="الباسورد"
+          class="in2"
+          name="password"
+          required
+        />
         <button type="submit" class="btn">تسجيل الدخول</button>
       </form>
-      <br>
-      <br>
+      <br />
+      <br />
       <span>معملتش حساب؟</span><a href="/si">اضغط هنا لعمل حساب</a>
     </div>
     <script>
-          const params = new URLSearchParams(window.location.search);
-    if (params.get("error") === "1") {
-      document.getElementById("error-box").innerHTML = `
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("error") === "1") {
+        document.getElementById("error-box").innerHTML = `
         <div class="alert alert-danger text-center" role="alert">
           ❌ اسم المستخدم أو كلمة السر غير صحيحة
         </div>
       `;
-    }
+      }
     </script>
   </body>
 </html>
