@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>فيديوهات | الصف الثالث الإعدادي</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <style>
+    body {
+      font-family: Cairo, sans-serif;
+      background: #111;
+      color: #fff;
+      padding: 20px;
+    }
+    #videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #222;
+      padding: 12px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255,0,0,0.5);
+    }
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+      max-height: 160px;
+      display: block;
+      margin: 0 auto 10px auto;
+    }
+    h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+      background: linear-gradient(90deg, #ff4b2b, #ff416c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .popup.show { display: flex; }
+    .video-container {
+      position: relative;
+      width: 80%;
+      max-width: 700px;
+    }
+    .popup video {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.8);
+    }
+    .controls {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      margin-bottom : 42px;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0,0,0,0.4);
+      padding: 8px 12px;
+      border-radius: 30px;
+      backdrop-filter: blur(6px);
+    }
+    .controls i, .controls a {
+      cursor: pointer;
+      color: #fff;
+      font-size: 20px;
+      padding: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      transition: 0.3s;
+    }
+    .controls i:hover, .controls a:hover {
+      background: rgba(255,255,255,0.3);
+      transform: scale(1.2);
+    }
+    .volume-slider, .progress-slider {
+      -webkit-appearance: none;
+      height: 6px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .volume-slider { width: 80px; background : linear-gradient(90deg, rgb(26, 115, 232), rgb(81, 45, 168) 50%);}
+    .progress-slider {
+      width: 100%;
+      background: linear-gradient(to right, #00c3ff 0%, #00c3ff 0%, #555 0%, #555 100%);
+      margin: 10px 0;
+      border-radius: 4px;
+    }
+    .volume-slider::-webkit-slider-thumb,
+    .progress-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      background: #ff416c;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      cursor: pointer;
+    }
+    #playPauseBtn {
+      padding-left : 20px;
+      padding-right : 20px;
+      padding-top : 15px;
+      padding-bottom : 15px;
+    }
+    #soundBtn {
+      padding-top : 11px;
+      padding-bottom : 11px;
+      padding-right : 10px;
+      padding-left : 10px;
+    }
+    #x {
+      padding-left : 13px;
+      padding-right : 13px;
+      padding-top : 10px;
+      padding-bottom : 10px;
+    }
+    #fullscreenBtn{
+      padding-left : 11px;
+      padding-right : 11px;
+      padding-top : 9px;
+      padding-bottom : 9px;
+    }
+  </style>
+</head>
+<body>
+
+<center><h1>فيديوهات الصف الثالث الإعدادي</h1></center>
+<br>
+<div id="videos"></div>
+
+<div id="popup" class="popup">
+  <div class="video-container">
+    <video id="popupVideo"></video>
+    <input type="range" id="progressSlider" class="progress-slider" min="0" max="100" value="0">
+    <div class="controls">
+      <i id="playPauseBtn" class="fa-solid fa-play" onclick="togglePlay()" title="تشغيل الفيديو"></i>
+      <i id="soundBtn" class="fa-solid fa-volume-high" onclick="toggleMute()" title="كتم/إلغاء الكتم"></i>
+      <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.05" value="1" title="مستوى الصوت">
+      <i id="downloadBtn" class="fa-solid fa-download" title="تحميل الفيديو"></i>
+      <i id="fullscreenBtn" class="fa-solid fa-expand" title="ملء الشاشة"></i>
+      <i class="fa-solid fa-xmark" id="x" onclick="closePopup()"  title="إغلاق الفيديو"></i>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const API_ENDPOINT = "/api/videos/p3"; // غيره حسب الصف
+const container = document.getElementById("videos");
+const popup = document.getElementById("popup");
+const popupVideo = document.getElementById("popupVideo");
+const downloadBtn = document.getElementById("downloadBtn");
+const playPauseBtn = document.getElementById("playPauseBtn");
+const soundBtn = document.getElementById("soundBtn");
+const volumeSlider = document.getElementById("volumeSlider");
+const progressSlider = document.getElementById("progressSlider");
+const fullscreenBtn = document.getElementById("fullscreenBtn");
+
+// جلب الفيديوهات من الـ API
+async function fetchVideos() {
+  try {
+    const res = await fetch(API_ENDPOINT);
+    const videos = await res.json();
+
+    if (!videos || videos.length === 0) {
+      container.innerHTML = "<center><p>⚠️ لا يوجد فيديوهات مرفوعة بعد.</p></center>";
+      return;
+    }
+
+    container.innerHTML = "";
+    videos.forEach((v, index) => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${v.thumbnail}" alt="thumb">
+        <h3>${v.title}</h3>
+        <button class="btn btn-danger downloadBtn" data-url="${v.url}">
+          تحميل الفيديو  <i class="fa-solid fa-download"></i>
+        </button>
+      `;
+      card.querySelector("img").addEventListener("click", () => openPopup(v.url));
+      const btn = card.querySelector(".downloadBtn");
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        downloadVideo(v.url);
+      });
+      container.appendChild(card);
+    });
+  } catch (err) {
+    console.error(err);
+    container.innerHTML = "<p>❌ حدث خطأ أثناء جلب الفيديوهات.</p>";
+  }
+}
+
+// فتح Popup الفيديو
+function openPopup(url) {
+  popupVideo.src = url;
+  popupVideo.load();
+  popup.classList.add("show");
+  playPauseBtn.className = "fa-solid fa-play";
+}
+
+// إغلاق الفيديو
+function closePopup() {
+  popup.classList.remove("show");
+  popupVideo.pause();
+  popupVideo.src = "";
+}
+
+// تشغيل/إيقاف الفيديو
+function togglePlay() {
+  if (popupVideo.paused) {
+    popupVideo.play();
+    playPauseBtn.className = "fa-solid fa-pause";
+  } else {
+    popupVideo.pause();
+    playPauseBtn.className = "fa-solid fa-play";
+  }
+}
+
+// كتم/إلغاء الكتم
+function toggleMute() {
+  popupVideo.muted = !popupVideo.muted;
+  soundBtn.className = popupVideo.muted ? "fa-solid fa-volume-xmark" : "fa-solid fa-volume-high";
+}
+
+// التحكم في الصوت
+volumeSlider.addEventListener("input", () => {
+  popupVideo.volume = volumeSlider.value;
+  soundBtn.className = popupVideo.volume == 0 ? "fa-solid fa-volume-xmark" : "fa-solid fa-volume-high";
+});
+
+// شريط تقدم الفيديو
+popupVideo.addEventListener("timeupdate", () => {
+  const percent = (popupVideo.currentTime / popupVideo.duration) * 100 || 0;
+  progressSlider.value = percent;
+  progressSlider.style.background = `linear-gradient(to right, #00c3ff ${percent}%, #555 ${percent}%)`;
+});
+progressSlider.addEventListener("input", () => {
+  popupVideo.currentTime = (progressSlider.value / 100) * popupVideo.duration;
+});
+
+// Fullscreen
+fullscreenBtn.addEventListener("click", () => {
+  if (!document.fullscreenElement) {
+    popupVideo.requestFullscreen().catch(err => alert(`❌ خطأ في فتح الشاشة الكاملة: ${err.message}`));
+  } else {
+    document.exitFullscreen();
+  }
+});
+document.addEventListener("fullscreenchange", () => {
+  fullscreenBtn.className = document.fullscreenElement ? "fa-solid fa-compress" : "fa-solid fa-expand";
+});
+
+// تحميل الفيديو
+function downloadVideo(url) {
+  fetch(url)
+    .then(res => res.blob())
+    .then(blob => {
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = url.split("/").pop();
+      link.click();
+      window.URL.revokeObjectURL(blobUrl);
+      alert("تم تنزيل الفيديو بنجاح ✔");
+    })
+    .catch(err => {
+      console.error(err);
+      alert("❌ لا يمكن تحميل الفيديو الآن.");
+    });
+}
+
+// إغلاق Popup
+document.getElementById("x").addEventListener("click", closePopup);
+
+// تحميل الفيديو مباشرة من زر الـ Popup
+downloadBtn.addEventListener("click", () => downloadVideo(popupVideo.src));
+
+// استدعاء الفيديوهات عند تحميل الصفحة
+fetchVideos();
+
+</script>
+
+</body>
+</html>

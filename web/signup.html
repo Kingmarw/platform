@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إنشاء حساب</title>
+  </head>
+  <body>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap");
+
+      * {
+        font-family: "Rubik", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+        
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #c05151, #d62424, #ff4848);
+        background-size: 200% 200%;
+        animation: gradientMove 15s ease infinite;
+      }
+      @keyframes gradientMove {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+      .container {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(15px);
+        border-radius: 15px;
+        padding: 50px;
+        width: 40%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: auto;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+      form h1{
+        color: #fff;
+      }
+      .in1 {
+        margin: 30px 0 0 0;
+        border: none;
+        outline: none;
+        padding: 7px;
+        border-radius: 15px;
+      }
+      .in2 {
+        margin: 15px 0 15px 0;
+        border: none;
+        outline: none;
+        padding: 7px;
+        border-radius: 15px;
+      }
+      img {
+        width: 150px;
+        margin-bottom: 15px;
+        border-radius: 15px;
+      }
+      .btn {
+        padding: 15px;
+        border: none;
+        border-radius: 15px;
+        color: #fff;
+        font-size: large;
+        border: none;
+        padding: 10px;
+        width: 150px;
+        border-radius: 15px;
+        cursor: pointer;
+        background: linear-gradient(90deg, rgb(255, 0, 55), rgb(241, 19, 23));
+        transition: all ease-in-out 0.4s;
+      }
+
+      .btn:hover {
+        border: 1px solid rgb(241, 19, 23);
+        color: rgb(241, 19, 23);
+        background: transparent;
+      }
+    </style>
+    <div class="container">
+      <div class="img">
+        <img src="/web/logo.jpg" alt="" />
+      </div>
+      <br />
+      <form action="/signup" method="post">
+        <h1>إنشاء حساب</h1>
+        <input type="text" placeholder="اسم المستخدم" class="in1" name="username" required/>
+        <input type="password" placeholder="الباسورد" class="in2" name="password" required/>
+        <button type="submit" class="btn">أنشيء حساب</button>
+      </form>
+      <br>
+      <br>
+      <span>عندك حساب بالفعل؟</span><a href="/lo">سجل دخول</a>
+    </div>
+  </body>
+</html>
