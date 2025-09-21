@@ -1,1 +1,14 @@
-{"users": [{"name": "maro"}]}
+{
+  "users": [
+    {
+      "name": "maro"
+    }
+  ],
+  "videos": [
+    {
+      "title": "درس جديد",
+      "url": "https://...",
+      "thumbnail": "https://..."
+    }
+  ]
+}
