@@ -42,7 +42,7 @@ const v = document.getElementById('main2');
 const v2 = document.getElementById('main3');
 const authArea = document.getElementById("auth-area");
 const user = document.getElementById('user');
-if (session == "logged" && username === "pk") {
+if (session == "logged" && username === "admin") {
   if (v2) v2.style.display = "none";
   authArea.innerHTML = `
     <button class="sign"><a href="/logout">تسجيل خروج</a></button>
@@ -67,3 +67,4 @@ if (session == "logged" && username === "pk") {
     <a href="/si"><button class="sign">اعمل حساب جديد</button></a>
   `;
 }
+
